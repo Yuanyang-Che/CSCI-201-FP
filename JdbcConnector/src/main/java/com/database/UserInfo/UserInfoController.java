@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/user") // This means URL's start with /user (after Application path)
 public class UserInfoController {
@@ -17,12 +19,37 @@ public class UserInfoController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
+        Optional<UserInfo> resultFromDB = userRepository.findById(email);
+        if (resultFromDB.isPresent()) {
+            return "User already exists";
+        }
+
         UserInfo n = new UserInfo();
         n.setUserName(name);
         n.setEmail(email);
         n.setPW(pw);
         userRepository.save(n);
         return "Saved New User";
+    }
+
+    @PostMapping(path = "/update") // Map ONLY POST Requests
+    public @ResponseBody
+    String updateUserInfo(@RequestParam String email, @RequestParam String name, @RequestParam String pw) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+        Optional<UserInfo> resultFromDB = userRepository.findById(email);
+        if (!resultFromDB.isPresent()) {
+            return "User does not exist";
+        }
+
+        UserInfo n = resultFromDB.get();
+
+        n.setUserName(name);
+        n.setEmail(email);
+        n.setPW(pw);
+        userRepository.save(n);
+        return "Update the info for User";
     }
 
     @GetMapping(path = "/all")

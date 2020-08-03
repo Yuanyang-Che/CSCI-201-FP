@@ -10,9 +10,10 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idToken;
+    private String email;
     private String userName;
     private String pw;
-    private String email;
+
 
     public Integer getIdToken() {
         return idToken;
@@ -20,6 +21,14 @@ public class UserInfo {
 
     public void setIdToken(Integer id) {
         this.idToken = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
@@ -37,13 +46,4 @@ public class UserInfo {
     public void setPW(String pw) {
         this.pw = pw;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
 }
