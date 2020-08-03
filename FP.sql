@@ -4,14 +4,14 @@ CREATE Database FP;
 USE FP;
 
 CREATE TABLE user_info ( 
-	id_token INT(11) primary key not null auto_increment,
-    user_name varchar(45) not null,
-	pw varchar(45) not null,
-	email varchar(45) not null
+	id_token INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_name VARCHAR(45) NOT NULL,
+	pw VARCHAR(45) NOT NULL,
+	email VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE diet_restriction (
-	id_token INT(45) not null,
+	id_token INT(45) NOT NULL,
     diet VARCHAR(45),
     exIngred VARCHAR(45),
     intolerence VARCHAR(45),
@@ -19,7 +19,7 @@ CREATE TABLE diet_restriction (
 );
 
 CREATE TABLE last_recipe (
-	id_token INT(45) not null,
+	id_token INT(45) NOT NULL,
     last_querey VARCHAR(45),
     Foreign key fk1(id_token) references user_info(id_token)
 );
