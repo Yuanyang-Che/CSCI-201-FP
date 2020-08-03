@@ -8,7 +8,7 @@ public class UserInfo {
     /*@GeneratedValue(strategy = GenerationType.AUTO) //auto generate one
     private Integer idToken;*/
 
-    @Id //mark that email is the "ID" of user, this should be what we lookup on
+    @Id //mark that email is the "ID" of user, this should be the key for lookups
     private String email;
     private String userName;
     private String pw;

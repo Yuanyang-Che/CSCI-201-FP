@@ -4,9 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JdbcRun {
-
+public class JDBCConnector {
     public static void main(String[] args) {
-        SpringApplication.run(JdbcRun.class, args);
+        SpringApplication.run(JDBCConnector.class, args);
     }
 }
