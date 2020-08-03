@@ -1,34 +1,29 @@
 package com.database.UserInfo;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class UserInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idToken;
+    /*@GeneratedValue(strategy = GenerationType.AUTO) //auto generate one
+    private Integer idToken;*/
+
+    @Id //mark that email is the "ID" of user, this should be what we lookup on
     private String email;
     private String userName;
     private String pw;
 
-
-    public Integer getIdToken() {
-        return idToken;
+    public UserInfo() {
     }
 
-    public void setIdToken(Integer id) {
-        this.idToken = id;
+    public UserInfo(String email, String userName, String pw) {
+        this.email = email;
+        this.userName = userName;
+        this.pw = pw;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUserName() {

@@ -1,25 +1,28 @@
 package com.database.DietRestriction;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class DietRestriction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idToken;
+    private String email;
     private String diet;
     private String exingred; //excluded ingredient
     private String intolerance;
 
-    public Integer getIdToken() {
-        return idToken;
+    public DietRestriction() {
     }
 
-    public void setIdToken(Integer idToken) {
-        this.idToken = idToken;
+    public DietRestriction(String email, String diet, String exingred, String intolerance) {
+        this.email = email;
+        this.diet = diet;
+        this.exingred = exingred;
+        this.intolerance = intolerance;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getDiet() {
@@ -30,11 +33,11 @@ public class DietRestriction {
         this.diet = diet;
     }
 
-    public String getExingred() {
+    public String getExIngred() {
         return exingred;
     }
 
-    public void setExingred(String exingred) {
+    public void setExIngred(String exingred) {
         this.exingred = exingred;
     }
 
