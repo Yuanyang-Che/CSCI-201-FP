@@ -35,5 +35,5 @@ INSERT INTO user_info (email, user_name, pw)
 INSERT INTO diet_restriction (email, diet, exIngred, intolerance)
 	VALUE ('test@usc.edu', 'diet1', 'dont eat1', 'intolerance1');
 
-
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 -- INSERT INTO last_recipe (email, last_query)

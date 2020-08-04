@@ -9,3 +9,7 @@ public class JDBCConnector {
         SpringApplication.run(JDBCConnector.class, args);
     }
 }
+
+class testing{
+
+}
