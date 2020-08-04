@@ -8,11 +8,11 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>accessing-data-mysql</artifactId>
+	<groupId>com.database</groupId>
+	<artifactId>JdbcConnector</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>accessing-data-mysql</name>
-	<description>Demo project for Spring Boot</description>
+	<name>JdbcConnector</name>
+	<description>Spring connection to JDBC</description>
 
 	<properties>
 		<java.version>1.8</java.version>

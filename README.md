@@ -6,7 +6,7 @@ To create new user, provide email, userName and password
 > $ curl localhost:8080/user/add -d email=___ -d userName=___ -d pw=___
 
 To update existing user, provide the email, and the updated userName and password
-> $ curl localhost:8080/user/update -d email=__ -d userName=__ -d pw=__
+> $ curl localhost:8080/user/update -d email=__ -d name=__ -d pw=__
 
 To search for an user, provide the email
 > $ curl localhost:8080/user/search -d email=___
