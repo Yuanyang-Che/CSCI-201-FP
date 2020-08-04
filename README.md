@@ -1,3 +1,13 @@
+# How to start
+
+Import the JdbcConnector as maven project    
+Execute FP.sql  
+Either run the project in IDE or    
+through command 
+> $ ./mvnw spring-boot:run
+
+## Use Curl to access database
+
 ### UserInfo 
 Get all user
 > $ curl localhost:8080/user/all
@@ -22,7 +32,7 @@ To update existing user's dietary restriction, provide user's email, diet, exIng
 > $ curl localhost:8080/diet/update -d email=___ -d diet=___ -d exIngred=___ -d intolerance=___
 
 To search user's dietary restriction, provide email
-> $ curl localhost:8080/diet/search -d email
+> $ curl localhost:8080/diet/search -d email=___
 
 ### Last Recipe
 Get all users' last recipe query
@@ -31,7 +41,7 @@ Get all users' last recipe query
 To create some user's last query, provide email and the last query
 > $ curl localhost:8080/last/add -d email=__ -d lastQuery=__
 
-To update existing one, provide the email, and the updated userName and password
+To update existing one, provide the email, and the updated last query
 > $ curl localhost:8080/last/update -d email=__ -d lastQuery=__
 
 To search user's last query, provide email
