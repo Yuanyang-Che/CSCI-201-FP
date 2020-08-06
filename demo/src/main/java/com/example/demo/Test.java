@@ -2,26 +2,39 @@ package com.example.demo;
 import com.spoonacular.DefaultApi;
 import com.spoonacular.client.ApiClient;
 import com.spoonacular.client.ApiException;
+import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 
+@SpringBootApplication
 public class Test {
-    public static void main(String[] args) {
-        ApiClient apiClient = new ApiClient();
-        apiClient.setApiKey("612a8ebcab0b449b8316b61349cc769e");
 
-        DefaultApi apiInstance = new DefaultApi();
-        apiInstance.setApiClient(apiClient);
-        System.out.println(apiInstance.getApiClient().getAuthentications());
-        Boolean limitLicense = true; // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
-        String tags = "vegetarian, dessert"; // String | The tags (can be diets, meal types, cuisines, or intolerances) that the recipe must have.
-        BigDecimal number = BigDecimal.valueOf(1); // BigDecimal | The number of random recipes to be returned (between 1 and 100).
-        try {
-            Object result = apiInstance.getRandomRecipes(limitLicense, tags, number);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRandomRecipes");
-            e.printStackTrace();
-        }
+    private static final Logger log = LoggerFactory.getLogger(Test.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(Test.class, args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+    @Bean
+    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        return args -> {
+            SpoonacularApi spoon = restTemplate.getForObject(
+                    "https://api.spoonacular.com/recipes/random?number=1&apiKey=612a8ebcab0b449b8316b61349cc769e", SpoonacularApi.class);
+            log.info(spoon.getRecipes().get(0).title);
+        };
     }
 }
