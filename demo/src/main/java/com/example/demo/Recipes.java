@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpoonacularApi {
+public class Recipes {
     public List<Recipe> getRecipes() {
         return recipes;
     }
@@ -20,4 +20,5 @@ public class SpoonacularApi {
                 "recipes=" + recipes.get(0) +
                 '}';
     }
+
 }
