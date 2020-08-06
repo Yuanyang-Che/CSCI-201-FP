@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class Test {
     public static void main(String[] args) {
         ApiClient apiClient = new ApiClient();
-        apiClient.setApiKey("apiKey=612a8ebcab0b449b8316b61349cc769e");
+        apiClient.setApiKey("612a8ebcab0b449b8316b61349cc769e");
 
         DefaultApi apiInstance = new DefaultApi();
         apiInstance.setApiClient(apiClient);
