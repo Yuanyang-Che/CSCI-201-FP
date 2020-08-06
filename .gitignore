@@ -3,6 +3,8 @@
 !*/
 !*.*
 
+!mvnw
+
 *.pdf
 
 # ignore DS_Store
@@ -61,7 +63,9 @@ gradle-app.setting
 out/
 .idea/
 .idea_modules/
-*.iml
+
+#*.iml
+
 *.ipr
 *.iws
 
