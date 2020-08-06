@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
 @EnableJpaRepositories
-@RestController
 public class SpringBootWebApplication extends SpringBootServletInitializer {
 
     @Override
