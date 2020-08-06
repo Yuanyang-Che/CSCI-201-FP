@@ -1,10 +1,15 @@
 package com.controller.LoginForm;
 
+import com.controller.UserInfo.UserInfo;
+import com.controller.UserInfo.UserInfoController;
+import com.controller.UserInfo.UserInfoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Optional;
 
 
 @Controller
@@ -18,11 +23,22 @@ public class LoginController {
     //checking for login credentials
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute("loginForm") LoginForm loginForm, Model model) {
-        if (loginForm.getUsername().equals("admin") && loginForm.getPassword().equals("admin")) {
-            return "home";
-        }
-        model.addAttribute("invalidCredentials", true);
+        String name = loginForm.getUsername();
+        String password = loginForm.getPassword();
 
-        return "login";
+
+        UserInfoRepository userInfoRepository = UserInfoController.getUserInfoRepository();
+        Optional<UserInfo> userInfo = userInfoRepository.findById(name);
+        if (!userInfo.isPresent()) {
+            //not found
+            model.addAttribute("invalidCredentials", true);
+            return "login";
+        }
+        else {
+            UserInfo user = userInfo.get();
+            String correct_pw = user.getPW();
+            return correct_pw.equalsIgnoreCase(password) ? "home" : "login";
+        }
+
     }
 }

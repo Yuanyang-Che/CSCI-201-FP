@@ -62,6 +62,7 @@ public class UserInfoController {
         // This returns a JSON or XML with the users
 
         Optional<UserInfo> userInfo = userInfoRepository.findById(email);
+
         return userInfo.map(Collections::singleton)
                 .orElseGet(Collections::emptySet);
     }
