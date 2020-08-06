@@ -51,7 +51,7 @@ public class UserInfoController {
 
         UserInfo user = resultFromDB.get();
         user.setUserName(name);
-        user.setPW(pw);
+        user.setPassword(pw);
         userInfoRepository.save(user);
         return "Update the info for User";
     }

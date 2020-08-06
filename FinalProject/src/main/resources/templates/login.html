@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="ISO-8859-1">
+        <meta charset="UTF-8">
         <title>Login</title>
     </head>
     <body>
         <h1>Login Page</h1>
         <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
         <form th:action="@{/login}" th:object="${loginForm}" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" autofocus="autofocus" />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autofocus="autofocus" />
             <br />
             <label for="password">Password</label>
             <input type="password" id="password" name="password" />
