@@ -2,6 +2,7 @@
 *
 !*/
 !*.*
+
 !mvnw
 
 *.pdf
@@ -62,7 +63,9 @@ gradle-app.setting
 out/
 .idea/
 .idea_modules/
+
 #*.iml
+
 *.ipr
 *.iws
 
