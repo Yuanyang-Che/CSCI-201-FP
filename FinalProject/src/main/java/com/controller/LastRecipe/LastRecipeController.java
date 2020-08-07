@@ -63,6 +63,16 @@ public class LastRecipeController {
     Iterable<LastRecipe> getUsers(@RequestParam String email) {
 
         Optional<LastRecipe> lastRecipe = lastRecipeRepository.findById(email);
+
+        if (!lastRecipe.isPresent()) {
+            //no such user
+        }
+        else {
+            LastRecipe something = lastRecipe.get();
+            String e = something.getEmail();
+            String last = something.getLastQuery();
+        }
+
         return lastRecipe.map(Collections::singleton)
                 .orElseGet(Collections::emptySet);
     }

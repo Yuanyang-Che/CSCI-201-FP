@@ -11,19 +11,24 @@ public class UserInfo {
     @Id //mark that email is the "ID" of user, this should be the key for lookups
     private String email;
     private String userName;
-    private String pw;
+    private String password;
 
     public UserInfo() {
+        super();
     }
 
     public UserInfo(String email, String userName, String pw) {
         this.email = email;
         this.userName = userName;
-        this.pw = pw;
+        this.password = pw;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
@@ -34,11 +39,11 @@ public class UserInfo {
         this.userName = name;
     }
 
-    public String getPW() {
-        return pw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPW(String pw) {
-        this.pw = pw;
+    public void setPassword(String pw) {
+        this.password = pw;
     }
 }

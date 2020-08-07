@@ -51,7 +51,7 @@ public class UserInfoController {
 
         UserInfo user = resultFromDB.get();
         user.setUserName(name);
-        user.setPW(pw);
+        user.setPassword(pw);
         userInfoRepository.save(user);
         return "Update the info for User";
     }
@@ -62,6 +62,7 @@ public class UserInfoController {
         // This returns a JSON or XML with the users
 
         Optional<UserInfo> userInfo = userInfoRepository.findById(email);
+
         return userInfo.map(Collections::singleton)
                 .orElseGet(Collections::emptySet);
     }
