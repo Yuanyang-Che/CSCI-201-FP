@@ -1,22 +1,32 @@
+# CSCI-201-FP
+To build and run the backend
+mac/linux
+./mvnw spring-boot:run
+(mvn spring-boot:run)
+windows
+mvnw spring-boot:run
+
+Spring MVP
+
+Routes:
+/recipes/random
+returns JSON of recipe with {title, readyInMinutes, servings, sourceUrl, image, imageType, instructions}
+
 # How to start
 
 Import the JdbcConnector as maven project    
 
 Update 
 > JdbcConnector/src/main/resources/application.properties 
-
-with your username and password for your MySQL connection 
-
-Execute FP.sql  
+ 
 
 Either run the project in your IDE or    
 through command 
-> $ ./mvnw spring-boot:run
+> $ ./mvnw spring-boot:run  
+> $ mvn spring-boot:run
 
-After successfully started the service, open the browser and put url 
-> localhost:8080
-
-This should bring you to the index page where you can click to login/register/guest
+Note for some Mac users try:
+> $ mvn spring-boot:run
 
 ---
 
