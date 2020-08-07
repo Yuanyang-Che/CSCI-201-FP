@@ -1,14 +1,18 @@
 package edu.usc.csci.boneapptheteeth.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class DietRestriction {
-    @Id
+    @Id @Column(columnDefinition = "VARCHAR(45) ", nullable = false,unique = true)
     private String email;
+    @Column(columnDefinition = "VARCHAR(100)")
     private String diet;
+    @Column(columnDefinition = "VARCHAR(100)")
     private String exingred; //excluded ingredient
+    @Column(columnDefinition = "VARCHAR(100)")
     private String intolerance;
 
     public DietRestriction() {

@@ -1,16 +1,20 @@
 package edu.usc.csci.boneapptheteeth.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class UserInfo {
     /*@GeneratedValue(strategy = GenerationType.AUTO) //auto generate one
     private Integer idToken;*/
 
-    @Id //mark that email is the "ID" of user, this should be the key for lookups
+    @Id @Column(columnDefinition = "VARCHAR(45)",unique = true, nullable = false)
     private String email;
+    @Column(columnDefinition = "VARCHAR(45)",unique = true, nullable = false)
     private String userName;
+    @Column(columnDefinition = "VARCHAR(45)",nullable = false)
     private String password;
 
     public UserInfo() {

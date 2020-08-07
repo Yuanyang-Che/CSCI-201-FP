@@ -1,12 +1,14 @@
 package edu.usc.csci.boneapptheteeth.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class LastRecipe {
-    @Id
+    @Id @Column(columnDefinition = "VARCHAR(45)", nullable = false, unique = true)
     private String email;
+    @Column(columnDefinition = "VARCHAR(45)")
     private String lastQuery;
 
     public LastRecipe() {
