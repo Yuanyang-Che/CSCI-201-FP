@@ -13,6 +13,11 @@ Either run the project in your IDE or
 through command 
 > $ ./mvnw spring-boot:run
 
+After successfully started the service, open the browser and put url 
+> localhost:8080
+
+This should bring you to the index page where you can click to login/register/guest
+
 ---
 
 ## Use Curl to access database
