@@ -26,6 +26,8 @@ Execute FP.sql
 Either run the project in your IDE or    
 through command 
 > $ ./mvnw spring-boot:run
+Note for some Mac users try:
+> $ mvn spring-boot:run
 
 ---
 
