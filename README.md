@@ -2,6 +2,7 @@
 To build and run the backend
 mac/linux
 ./mvnw spring-boot:run
+(mvn spring-boot:run)
 windows
 mvnw spring-boot:run
 
