@@ -18,14 +18,12 @@ Import the JdbcConnector as maven project
 
 Update 
 > JdbcConnector/src/main/resources/application.properties 
-
-with your username and password for your MySQL connection 
-
-Execute FP.sql  
+ 
 
 Either run the project in your IDE or    
 through command 
-> $ ./mvnw spring-boot:run
+> $ ./mvnw spring-boot:run  
+> $ mvn spring-boot:run
 
 Note for some Mac users try:
 > $ mvn spring-boot:run
