@@ -1,17 +1,8 @@
-package com.example.demo;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.sun.codemodel.internal.JArray;
-import net.minidev.json.JSONArray;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+package com.controller;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @SpringBootApplication
 public class SpoonacularApiResponse {
