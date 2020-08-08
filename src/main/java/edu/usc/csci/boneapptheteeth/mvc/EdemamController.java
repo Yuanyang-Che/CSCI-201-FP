@@ -2,11 +2,17 @@ package edu.usc.csci.boneapptheteeth.mvc;
 
 import edu.usc.csci.boneapptheteeth.mvc.dto.Recipe;
 import edu.usc.csci.boneapptheteeth.service.EdamamApiService;
+import org.json.JSONString;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/recipe")
 public class EdemamController {
+    @Autowired
+    SimpMessagingTemplate simpleMessagingTemplate;
+
     @RequestMapping(value = "/random", method = RequestMethod.GET)
     public Recipe getRecipeBySearchJSON() {
         EdamamApiService instance = new EdamamApiService();
@@ -17,6 +23,7 @@ public class EdemamController {
     public Recipe getRecipeBySearchJSON(@PathVariable("query") String query) {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
+        this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
         return recipe;
     }
 }

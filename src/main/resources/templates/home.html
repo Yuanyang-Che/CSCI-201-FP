@@ -12,14 +12,15 @@
                 stompClient = Stomp.over(socket);
 <!--                upgrade connection protocol to STOMP-->
                 stompClient.connect({}, function(frame) {
-                    stompClient.subscribe('/topic', function(messageOutput) {
+                    stompClient.subscribe('/topic/messages', function(messageOutput) {
+                        console.log("subscribed");
                         showMessageOutput(JSON.parse(messageOutput.body));
                     });
                 });
             }
 
             function showMessageOutput(messageOutput) {
-              //add output
+                console.log(messageOutput);
             }
 
             connect();

@@ -6,11 +6,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-//Defines methods for configuring message handling with simple
-//messaging protocols (e.g. STOMP) from WebSocket clients.
 
-//Add this annotation to an @Configuration class to enable
-//broker-backed messaging over WebSocket using a higher-level messaging sub-protocol.
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebPageConfiguration implements WebSocketMessageBrokerConfigurer {
@@ -19,7 +15,7 @@ public class WebPageConfiguration implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
 
-//        /topic prefix indicates that routes starting with given destination will be sent to all subscribers
+//designate all routes that are subscriptions from the client with this prefix
         config.enableSimpleBroker("/topic");
     }
 

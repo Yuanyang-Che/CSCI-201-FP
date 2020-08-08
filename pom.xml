@@ -117,6 +117,10 @@
             <artifactId>jquery</artifactId>
             <version>3.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
