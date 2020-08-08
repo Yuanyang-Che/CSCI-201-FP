@@ -3,6 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>Bon-app-the-teeth</title>
+        <script src="/webjars/sockjs-client/sockjs.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.js"></script>
+        <script type="text/javascript">
+            var stompClient = null;
+            function connect() {
+                var socket = new SockJS('/interaction');
+                stompClient = Stomp.over(socket);
+<!--                upgrade connection protocol to STOMP-->
+                stompClient.connect({}, function(frame) {
+                    stompClient.subscribe('/topic', function(messageOutput) {
+                        showMessageOutput(JSON.parse(messageOutput.body));
+                    });
+                });
+            }
+
+            function showMessageOutput(messageOutput) {
+              //add output
+            }
+
+            connect();
+
+        </script>
     </head>
     <body>
         <h1>Welcome to Bon-app-the-teeth</h1>
