@@ -72,7 +72,7 @@ To update existing one, provide the email, and the updated last query
 
 To search user's last query, provide email
 > $ curl localhost:8080/last/search -d email=___
-
+---
 ### Search Recipe 
 Search for recipe by name
 > $ curl localhost:8080/recipe/search/{query},  //e.g. query=chicken sandwich
