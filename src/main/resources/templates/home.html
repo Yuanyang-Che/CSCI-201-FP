@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        #message{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 30px;
+            width: 30%;
+        }
+
+    </style>
     <head>
         <meta charset="UTF-8">
         <title>Bon-app-the-teeth</title>
@@ -13,14 +23,14 @@
 <!--                upgrade connection protocol to STOMP-->
                 stompClient.connect({}, function(frame) {
                     stompClient.subscribe('/topic/messages', function(messageOutput) {
-                        console.log("subscribed");
                         showMessageOutput(messageOutput);
                     });
                 });
             }
 
             function showMessageOutput(messageOutput) {
-                console.log(messageOutput);
+                var textNode = document.createTextNode(messageOutput.body);     // Create a text node
+                document.getElementById('message').appendChild(textNode);
             }
 
             connect();
@@ -29,5 +39,6 @@
     </head>
     <body>
         <h1>Welcome to Bon-app-the-teeth</h1>
+        <div id="message"></div>
     </body>
 </html>
