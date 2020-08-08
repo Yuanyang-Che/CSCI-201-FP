@@ -26,6 +26,7 @@ public class WebPageConfiguration implements WebSocketMessageBrokerConfigurer {
 //    this part tells dispatch to pass it to mesageBroker
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        //for websockets connection
         registry.addEndpoint("/interaction");
         registry.addEndpoint("/interaction").withSockJS();
     }
