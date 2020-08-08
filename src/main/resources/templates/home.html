@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>BonApptheTeethHome</title>
@@ -7,5 +7,11 @@
     </head>
     <body>
         <h1>Welcome to Bon App the Teeth</h1>
+
+        <!-- serach engine call goes here -->
+        <form th:action="@{/search}" th:object="${loginForm}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </body>
 </html>
