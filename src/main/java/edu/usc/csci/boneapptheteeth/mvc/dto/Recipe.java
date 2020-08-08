@@ -1,45 +1,26 @@
 package edu.usc.csci.boneapptheteeth.mvc.dto;
 
 public class Recipe {
-
-    private String title;
-    private int readyInMinutes;
-    private int servings;
-    private String sourceUrl;
+    private String uri;
+    private String label;
     private String image;
-    private String imageType;
-    private String instructions;
-
-    public String getTitle() {
-        return title;
+    private String url;
+    private String yield;
+    private String ingredientLines;
+    public String getUri() {
+        return uri;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public int getReadyInMinutes() {
-        return readyInMinutes;
+    public String getLabel() {
+        return label;
     }
 
-    public void setReadyInMinutes(int readyInMinutes) {
-        this.readyInMinutes = readyInMinutes;
-    }
-
-    public int getServings() {
-        return servings;
-    }
-
-    public void setServings(int servings) {
-        this.servings = servings;
-    }
-
-    public String getSourceUrl() {
-        return sourceUrl;
-    }
-
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getImage() {
@@ -50,19 +31,28 @@ public class Recipe {
         this.image = image;
     }
 
-    public String getImageType() {
-        return imageType;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImageType(String imageType) {
-        this.imageType = imageType;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getInstructions() {
-        return instructions;
+    public String getServings() {
+        return yield;
     }
 
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
+    public void setServings(String servings) {
+        this.yield = servings;
     }
+
+    public String getIngredientLines() {
+        return ingredientLines;
+    }
+
+    public void setIngredientLines(String ingredientLines) {
+        this.ingredientLines = ingredientLines;
+    }
+
 }
