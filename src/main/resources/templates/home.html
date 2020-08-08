@@ -14,7 +14,7 @@
                 stompClient.connect({}, function(frame) {
                     stompClient.subscribe('/topic/messages', function(messageOutput) {
                         console.log("subscribed");
-                        showMessageOutput(JSON.parse(messageOutput.body));
+                        showMessageOutput(messageOutput);
                     });
                 });
             }
