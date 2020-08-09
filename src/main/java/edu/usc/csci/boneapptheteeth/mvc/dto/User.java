@@ -3,24 +3,14 @@ package edu.usc.csci.boneapptheteeth.mvc.dto;
 public abstract class User {
     protected String IPAddress;
     protected String port;
-    protected String name;
-    protected String email;
-    protected String password; 
-    
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password; 
+
+    public User() {
+        this.IPAddress = null;
+        this.port = null;
     }
-    public void changePassword(String password) {
-        this.password = password;
-    }
-    
-    public void changeName(String name) {
-        this.name = name;
-    }
-    
-    public void changeEmail(String email) {
-        this.email = email;
+
+    public User(String port, String IPAddress) {
+        this.IPAddress = IPAddress;
+        this.port = port;
     }
 }
