@@ -1,10 +1,54 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        #messages{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 30px;
+            width: 30%;
+        }
+
+        #notif {
+            list-style-type: none;
+        }
+
+    </style>
     <head>
         <meta charset="UTF-8">
         <title>Bon-app-the-teeth</title>
+        <script src="/webjars/sockjs-client/sockjs.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.js"></script>
+        <script src="/webjars/jquery/jquery.js"></script>
+        <script type="text/javascript">
+            var stompClient = null;
+            function connect() {
+                var socket = new SockJS('/interaction');
+                stompClient = Stomp.over(socket);
+<!--                upgrade connection protocol to STOMP-->
+                stompClient.connect({}, function(frame) {
+                    stompClient.subscribe('/topic/messages', function(messageOutput) {
+                        showMessageOutput(messageOutput.body);
+                    });
+                });
+            }
+
+            function showMessageOutput(message) {
+                var li = document.createElement('li');
+                li.id = "notif";
+                var textNode =  document.createTextNode(message);
+                li.append(textNode);
+                $('#messages').append(li);
+                setTimeout(function() {
+                     li.remove();
+                }, 5000);
+            }
+            connect();
+
+        </script>
     </head>
     <body>
         <h1>Welcome to Bon-app-the-teeth</h1>
+        <ul id="messages"></ul>
     </body>
 </html>
