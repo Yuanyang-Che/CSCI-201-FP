@@ -12,7 +12,7 @@ public abstract class User {
         this.email = email;
         this.password = password; 
     }
-    public void changePassword(String naem) {
+    public void changePassword(String password) {
         this.password = password;
     }
     
