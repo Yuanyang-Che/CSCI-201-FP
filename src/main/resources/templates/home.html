@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
     <style>
-        #message{
+        #messages{
             position: absolute;
             bottom: 0;
             right: 0;
             padding: 30px;
             width: 30%;
+        }
+
+        #notif {
+            list-style-type: none;
         }
 
     </style>
@@ -15,30 +19,37 @@
         <title>Bon-app-the-teeth</title>
         <script src="/webjars/sockjs-client/sockjs.js"></script>
         <script src="/webjars/stomp-websocket/stomp.js"></script>
+        <script src="/webjars/jquery/jquery.js"></script>
         <script type="text/javascript">
             var stompClient = null;
+            var counter = 0;
             function connect() {
                 var socket = new SockJS('/interaction');
                 stompClient = Stomp.over(socket);
 <!--                upgrade connection protocol to STOMP-->
                 stompClient.connect({}, function(frame) {
                     stompClient.subscribe('/topic/messages', function(messageOutput) {
-                        showMessageOutput(messageOutput);
+                        showMessageOutput(messageOutput.body);
                     });
                 });
             }
 
-            function showMessageOutput(messageOutput) {
-                var textNode = document.createTextNode(messageOutput.body);     // Create a text node
-                document.getElementById('message').appendChild(textNode);
+            function showMessageOutput(message) {
+                var li = document.createElement('li');
+                li.id = "notif";
+                var textNode =  document.createTextNode(message);
+                li.append(textNode);
+                $('#messages').append(li);
+                setTimeout(function() {
+                     li.remove();
+                }, 5000);
             }
-
             connect();
 
         </script>
     </head>
     <body>
         <h1>Welcome to Bon-app-the-teeth</h1>
-        <div id="message"></div>
+        <ul id="messages"></ul>
     </body>
 </html>

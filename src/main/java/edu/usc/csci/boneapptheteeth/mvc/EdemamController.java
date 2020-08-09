@@ -6,6 +6,9 @@ import org.json.JSONString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
+import sun.security.provider.PolicyParser;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/recipe")
@@ -20,7 +23,7 @@ public class EdemamController {
         return recipe;
     }
     @GetMapping("/search/{query}")
-    public Recipe getRecipeBySearchJSON(@PathVariable("query") String query) {
+    public Recipe getRecipeBySearchJSON(@PathVariable("query") String query, Principal user) {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
         this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
