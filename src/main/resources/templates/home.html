@@ -22,7 +22,6 @@
         <script src="/webjars/jquery/jquery.js"></script>
         <script type="text/javascript">
             var stompClient = null;
-            var counter = 0;
             function connect() {
                 var socket = new SockJS('/interaction');
                 stompClient = Stomp.over(socket);
