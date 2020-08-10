@@ -3,7 +3,6 @@ package edu.usc.csci.boneapptheteeth.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class UserInfo {

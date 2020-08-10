@@ -41,7 +41,6 @@ public class LoginRegisterController {
             String correct_pw = user.getPassword();
             return correct_pw.equalsIgnoreCase(password) ? "home" : "login";
         }
-
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

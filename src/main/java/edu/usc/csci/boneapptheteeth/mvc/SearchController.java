@@ -14,15 +14,15 @@ import java.util.Optional;
 @Controller
 public class SearchController {
 
-    //to get login page
-    @RequestMapping(value = "/searchRecipe", method = RequestMethod.GET)
-    public String getLoginForm() {
-        return "login";
+    //to get search results page
+    @RequestMapping(value = "/searchData", method = RequestMethod.GET)
+    public String getSearchResult() {
+        return "searchResult";
     }
 
     //checking for login credentials
-    @RequestMapping(value = "/searchRecipe", method = RequestMethod.POST)
-    public String login(@ModelAttribute("searchResults") LoginForm loginForm, Model model) {
+    @RequestMapping(value = "/searchData", method = RequestMethod.POST)
+    public String login(@ModelAttribute("searchResult") LoginForm loginForm, Model model) {
         return null;
     }
 
