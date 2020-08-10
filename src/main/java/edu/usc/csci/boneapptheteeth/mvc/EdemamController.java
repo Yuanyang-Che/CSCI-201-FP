@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/recipe")
 public class EdemamController {
     @RequestMapping(value = "/random", method = RequestMethod.GET)
     public Recipe getRecipeBySearchJSON() {
@@ -14,7 +13,7 @@ public class EdemamController {
         Recipe recipe = instance.getRandomRecipe();
         return recipe;
     }
-    @RequestMapping(value = "/searchData", method = RequestMethod.POST)
+    @RequestMapping(value = "/searchRecipe", method = RequestMethod.POST)
     public Recipe getRecipeBySearchJSON(@RequestParam(name = "search", required = true) String query,  Model model) {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
