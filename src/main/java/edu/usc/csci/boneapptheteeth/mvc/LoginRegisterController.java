@@ -16,7 +16,12 @@ import java.util.Optional;
 @Controller
 public class LoginRegisterController {
     @Autowired
-    UserInfoRepository userInfoRepository ;
+    UserInfoRepository userInfoRepository;
+
+    @RequestMapping("/")
+    public String index() {
+        return "login";
+    }
 
     //to get login page
     @RequestMapping(value = "/login", method = RequestMethod.GET)
