@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>BonApptheTeeth - Home</title>
+        <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+    </head>
+    <body>
+        <h1>Welcome to Bon App the Teeth</h1>
+
+        <!-- serach engine call goes here -->
+        <form th:action="@{/searchRecipe}" method="post">
+            <input type="text" placeholder="Search a recipe..." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
 <html>
     <style>
         #messages{
