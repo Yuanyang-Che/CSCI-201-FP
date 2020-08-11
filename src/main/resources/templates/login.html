@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v4.1.1">
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="signin.css" rel="stylesheet">
     </head>
-    <body>
-        <h1>Login Page</h1>
-        <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
-        <form th:action="@{/login}" th:object="${loginForm}" method="post">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autofocus="autofocus" />
-            <br />
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-            <br />
-            <input type="submit" value="Log In" />
-        </form>
+    <body class="text-center">
+        <div class ="form-signin">
+            <div class="row">
+                <form class="form-signin" th:action="@{/login}" th:object="${loginForm}" method="POST">
+                    <!-- top image -->
+                    <img class="mb-4" src="images/Boneappleteeth.jpeg" alt="" width="144" height="144">
+
+                    <!-- title -->
+                    <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
+                    <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+
+                    <!-- email -->
+                    <label for="email" class="sr-only">Email address</label>
+                    <input type="email" id="email" name="email" autofocus="autofocus" class="form-control" placeholder="Email address" required autofocus>
+
+                    <!-- password -->
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+
+                    <!-- remember me button -->
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+
+                    <!-- submit button -->
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">Sign In</button>
+
+                    <br />
+                </form>
+
+                <div class="form-signin">
+                    <h1 class="h3 mb-3 font-weight-normal">Don't have an account?</h1>
+                    <button name ="signup" class="btn btn-lg btn-primary btn-block" type="button">Sign Up</button>
+
+                    <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
+                </div>
+
+            </div>
+        </div>
 
     </body>
 </html>
