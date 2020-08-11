@@ -1,5 +1,6 @@
 package edu.usc.csci.boneapptheteeth.service;
 
+import edu.usc.csci.boneapptheteeth.mvc.dto.Hit;
 import edu.usc.csci.boneapptheteeth.mvc.dto.Hits;
 import edu.usc.csci.boneapptheteeth.mvc.dto.Recipe;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -10,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class EdamamApiService {
@@ -70,5 +72,23 @@ public class EdamamApiService {
         Hits hits = restTemplate.getForObject(url,
                 Hits.class);
         return hits.getHits().get(0).getRecipe();
+    }
+    public List<Hit> getTenRecipesBySearch(String query){
+        RestTemplateBuilder builder = new RestTemplateBuilder();
+        RestTemplate restTemplate = builder.build();
+        String url = "https://api.edamam.com/search?q=" +query
+                + "&to=10&app_id=c311f2e8&app_key=f12e909221053a3cb5850cc10379f0da";
+        Hits hits = restTemplate.getForObject(url,
+                Hits.class);
+        return hits.getHits();
+    }
+    public List<Hit> getRecipesBySearchDietary(String query,String diet){
+        RestTemplateBuilder builder = new RestTemplateBuilder();
+        RestTemplate restTemplate = builder.build();
+        String url = "https://api.edamam.com/search?q=" +query
+                + "&diet=" + diet + "&to=10&app_id=c311f2e8&app_key=f12e909221053a3cb5850cc10379f0da";
+        Hits hits = restTemplate.getForObject(url,
+                Hits.class);
+        return hits.getHits();
     }
 }

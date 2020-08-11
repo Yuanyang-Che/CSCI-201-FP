@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Recipe {
     private String uri;
-    private String label;
+    private String label; //name
     private String image;
     private String url;
+    private float calories;
     private List<String> ingredientLines;
+
     public String getUri() {
         return uri;
     }
@@ -38,6 +40,14 @@ public class Recipe {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public float getCalories() {
+        return calories;
+    }
+
+    public void setCalories(float calories) {
+        this.calories = calories;
     }
 
     public List<String> getIngredientLines() {
