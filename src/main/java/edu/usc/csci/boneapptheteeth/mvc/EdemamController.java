@@ -1,5 +1,6 @@
 package edu.usc.csci.boneapptheteeth.mvc;
 
+import edu.usc.csci.boneapptheteeth.mvc.dto.Hits;
 import edu.usc.csci.boneapptheteeth.mvc.dto.Recipe;
 import edu.usc.csci.boneapptheteeth.service.EdamamApiService;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class EdemamController {
         Recipe recipe = instance.getRandomRecipe();
         return recipe;
     }
-    
+
     @RequestMapping(value = "/searchRecipe", method = RequestMethod.POST)
     public String getRecipeBySearchJSON(@RequestParam(name = "search", required = true) String query,  Model model) {
         EdamamApiService instance = new EdamamApiService();
@@ -33,5 +34,26 @@ public class EdemamController {
         return "recipe";
     }
 
+    @RequestMapping(value = "/searchRecipeTenDiet", method = RequestMethod.POST)
+    public String getRecipesBySearchDietaryJSON(@RequestParam(name = "search", required = true) String query, Model model){
+        EdamamApiService instance = new EdamamApiService();
+        String option = (String) model.getAttribute("radioSetOne");
+        if (option == null) option = "option1";
+        if(option.equals("option1")){
+            option = "balanced";
+        }else if(option.equals("option2")){
+            option = "high-protein";
+        }else if(option.equals("option3")){
+            option = "low-fat";
+        }else if(option.equals("option4")){
+            option = "low-carb";
+        }else{
+            option = "balanced";
+        }
+        Hits hits = instance.getRecipesBySearchDietary(query,option);
+        model.addAttribute("hits",hits);
+        //System.out.println(hits.getHits().get(0).getRecipe().getLabel());
+        return "recipe";
+    }
 }
 
