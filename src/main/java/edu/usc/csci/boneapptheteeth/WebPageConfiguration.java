@@ -15,11 +15,11 @@ public class WebPageConfiguration implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
 
-//designate all routes that are subscriptions from the client with this prefix
+        //designate all routes that are subscriptions from the client with this prefix
         config.enableSimpleBroker("/topic");
     }
 
-//    this part tells dispatch to pass it to mesageBroker
+    //this part tells dispatch to pass it to messageBroker in charge of Stomp requests
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         //for websockets connection

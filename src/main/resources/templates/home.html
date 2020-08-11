@@ -41,7 +41,7 @@
             function connect() {
                 var socket = new SockJS('/interaction');
                 stompClient = Stomp.over(socket);
-<!--                upgrade connection protocol to STOMP-->
+<!--                upgrade websocket connection protocol to STOMP-->
                 stompClient.connect({}, function(frame) {
                     stompClient.subscribe('/topic/messages', function(messageOutput) {
                         showMessageOutput(messageOutput.body);
