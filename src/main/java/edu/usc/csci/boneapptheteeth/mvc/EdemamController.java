@@ -2,13 +2,10 @@ package edu.usc.csci.boneapptheteeth.mvc;
 
 import edu.usc.csci.boneapptheteeth.mvc.dto.Recipe;
 import edu.usc.csci.boneapptheteeth.service.EdamamApiService;
-<<<<<<< HEAD
 import org.springframework.ui.Model;
-=======
 import org.json.JSONString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
->>>>>>> 0a4ea20040bf4e9a5f84c51fdf79c6c758bcf838
 import org.springframework.web.bind.annotation.*;
 import sun.security.provider.PolicyParser;
 
@@ -31,6 +28,8 @@ public class EdemamController {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
         model.addAttribute("recipe", recipe);
+        this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
         return recipe;
     }
 }
+
