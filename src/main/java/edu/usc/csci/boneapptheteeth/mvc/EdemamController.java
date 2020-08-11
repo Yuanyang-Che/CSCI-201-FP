@@ -2,6 +2,7 @@ package edu.usc.csci.boneapptheteeth.mvc;
 
 import edu.usc.csci.boneapptheteeth.mvc.dto.Recipe;
 import edu.usc.csci.boneapptheteeth.service.EdamamApiService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.json.JSONString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import sun.security.provider.PolicyParser;
 
 import java.security.Principal;
 
-@RestController
+@Controller
 public class EdemamController {
     @Autowired
     SimpMessagingTemplate simpleMessagingTemplate;
@@ -31,5 +32,6 @@ public class EdemamController {
         this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
         return "recipe";
     }
+
 }
 

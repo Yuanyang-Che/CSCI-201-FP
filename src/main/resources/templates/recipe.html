@@ -1,12 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
-    </body>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="./css/bootstrap.min.css?3984"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css?4773" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="./css/font-awesome.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin,latin-ext"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <title>Bon App the Teeth</title>
+
+    <!-- Analytics -->
+
+    <!-- Analytics END -->
+</head>
+<body>
+<!-- Main container -->
+<div class="page-container">
+    <div class="bloc b-divider l-bloc" id="bloc-0">
+        <div class="container bloc-sm">
+            <div class="row">
+                <div class="col">
+                    <nav
+                            class="navbar navbar-light row navbar-expand-md"
+                            role="navigation"
+                    >
+                        <a
+                                class="navbar-brand link-style ltc-mordant-red-19"
+                                href="index.html"
+                        >SalEats!</a
+                        >
+                        <button
+                                id="nav-toggle"
+                                type="button"
+                                class="ml-auto ui-navbar-toggler navbar-toggler border-0 p-0"
+                                data-toggle="collapse"
+                                data-target=".navbar-33885"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                        >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div
+                                class="collapse navbar-collapse navbar-33885"
+                        >
+                            <ul
+                                    class="site-navigation nav navbar-nav ml-auto"
+                            >
+                                <li class="nav-item">
+                                    <a
+                                            href="index.html"
+                                            class="nav-link"
+                                    >Home</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                            href="login-sign-up.html"
+                                            class="a-btn nav-link"
+                                    >Login / Sign Up</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" th:action="@{/}RestaurantSearchServlet" name="searchform">
+        <div class="bloc none l-bloc" id="bloc-3">
+            <div class="container bloc-sm">
+                <div class="row align-items-start">
+                    <div class="col-md-6 col">
+                        <div class="form-group">
+                            <input
+                                    class="form-control"
+                                    placeholder="Restaurant Name"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-1">
+                        <a
+                                href="index.html"
+                                class="btn btn-block btn-mordant-red-19"
+                        ><span class="fa fa-search"></span
+                        ></a>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="radioSetOne"
+                                    value="option1"
+                            />
+                            <label class="form-check-label">
+                                Best Match
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="radioSetOne"
+                                    value="option1"
+                            />
+                            <label class="form-check-label">
+                                Rating
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="radioSetOne"
+                                    value="option1"
+                            />
+                            <label class="form-check-label">
+                                Review Count
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="radioSetOne"
+                                    value="option1"
+                            />
+                            <label class="form-check-label">
+                                Distance
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="bloc l-bloc" id="bloc-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input
+                                class="form-control"
+                                placeholder="Latitude"
+                                type="number"
+                        />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input
+                                class="form-control"
+                                type="number"
+                                placeholder="Longitude"
+                        />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a
+                            href="index.html"
+                            class="btn btn-block btn-cornflower-blue"
+                    ><span
+                            class="fa fa-map-marker icon-spacer"
+                    ></span
+                    >Google Maps (Drop a pin!)</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bloc l-bloc" id="bloc-5">
+        <div class="container bloc-sm">
+            <div class="row">
+                <div class="col">
+                    <h2 class="mg-md sm-shadow">
+                        <!-- Results for <%//= restaurantSearched %> -->
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%ArrayList<Restaurant> businesses = new ArrayList<>();
+    businesses = (ArrayList<Restaurant>)request.getAttribute("searchResults"); %><br/>
+        <% for (int i = 0; i < 10; i++) { %>
+        <div class="bloc l-bloc" id="bloc-6">
+            <div class="container b-divider-dashed bloc-md">
+                <div class="row">
+                    <div class="col-sm-4 col">
+                        <img
+                                src="img/lazyload-ph.png"
+                                data-src=<%= businesses.get(i).getImage_url()%>
+                        class="img-fluid mx-auto d-block img-rd-md img-style lazyload"
+                        />
+                    </div>
+                    <div class="col-sm-8 col">
+                        <h3 class="mg-md sm-shadow">
+
+                            <%= businesses.get(i).getName() %>
+                        </h3>
+                        <h4 class="mg-md">
+                            <%= businesses.get(i).getAddress() %><br />
+                        </h4>
+                        <h4 class="mg-md">
+                            <a class="link-0-style" href="index.html"
+                            ><%= businesses.get(i).getUrl() %></a
+                            ><br />
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <!-- ScrollToTop Button -->
+        <a
+                class="bloc-button btn btn-d scrollToTop"
+                onclick="scrollToTarget('1',this)"
+        ><span class="fa fa-chevron-up"></span
+        ></a>
+        <!-- ScrollToTop Button END-->
+
+        <div class="bloc none l-bloc" id="bloc-2">
+            <div class="container bloc-lg">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group text-lg-center">
+                            <label class="text-lg-center">
+                                Made by your friendly CP
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- Main container END -->
+
+<script src="./js/jquery-3.3.1.min.js?9673"></script>
+<script src="./js/bootstrap.bundle.min.js?8114"></script>
+<script src="./js/blocs.min.js?9424"></script>
+<script src="./js/lazysizes.min.js" defer></script>
+<!-- Additional JS END -->
+
+<!-- Preloader -->
+<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
+<!-- Preloader END -->
+</body>
 </html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
 
-
+</body>
+</html>
