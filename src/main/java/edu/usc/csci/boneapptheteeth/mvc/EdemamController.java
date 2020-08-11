@@ -24,12 +24,12 @@ public class EdemamController {
     }
     
     @RequestMapping(value = "/searchRecipe", method = RequestMethod.POST)
-    public Recipe getRecipeBySearchJSON(@RequestParam(name = "search", required = true) String query,  Model model) {
+    public String getRecipeBySearchJSON(@RequestParam(name = "search", required = true) String query,  Model model) {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
         model.addAttribute("recipe", recipe);
         this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
-        return recipe;
+        return "recipe";
     }
 }
 
