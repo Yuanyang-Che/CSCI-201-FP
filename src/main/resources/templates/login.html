@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
@@ -11,7 +11,8 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.css" rel="stylesheet">
+        <!--<link href="css/bootstrap.css" rel="stylesheet">-->
+        <link rel="stylesheet" th:href="@{/templates/css/bootstrap.css}">
 
         <style>
             .bd-placeholder-img {
@@ -32,24 +33,29 @@
         <!-- Custom styles for this template -->
         <link href="signin.css" rel="stylesheet">
     </head>
-    <body class="text-center">
-        <div class ="form-signin">
-            <div class="row">
-                <form class="form-signin" th:action="@{/login}" th:object="${loginForm}" method="POST">
-                    <!-- top image -->
-                    <img class="mb-4" src="images/Boneappleteeth.jpeg" alt="" width="144" height="144">
 
-                    <!-- title -->
-                    <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
+    <body class="text-center">
+        <div class="form-signin">
+            <div class="row">
+                <!-- title -->
+                <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
+                <form class="form-signin" th:action="@{/login}" th:object="${loginForm}" method="POST">
+                    <!-- top image  -->
+                    <img class="mb-4" th:scr="@{images/Boneappleteeth.jpeg}" alt="" width="144"
+                         height="144">
+
+
                     <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
 
                     <!-- email -->
                     <label for="email" class="sr-only">Email address</label>
-                    <input type="email" id="email" name="email" autofocus="autofocus" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="email" id="email" name="email" autofocus="autofocus" class="form-control"
+                           placeholder="Email address" required>
 
                     <!-- password -->
                     <label for="password" class="sr-only">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                           required>
 
                     <!-- remember me button -->
                     <div class="checkbox mb-3">
@@ -61,12 +67,12 @@
                     <!-- submit button -->
                     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">Sign In</button>
 
-                    <br />
+                    <br/>
                 </form>
 
                 <div class="form-signin">
                     <h1 class="h3 mb-3 font-weight-normal">Don't have an account?</h1>
-                    <button name ="signup" class="btn btn-lg btn-primary btn-block" type="button">Sign Up</button>
+                    <button name="signup" class="btn btn-lg btn-primary btn-block" type="button">Sign Up</button>
 
                     <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
                 </div>
