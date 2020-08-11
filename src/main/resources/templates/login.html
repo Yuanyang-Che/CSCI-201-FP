@@ -11,8 +11,7 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
 
         <!-- Bootstrap core CSS -->
-        <!--<link href="css/bootstrap.css" rel="stylesheet">-->
-        <link rel="stylesheet" th:href="@{/templates/css/bootstrap.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 
         <style>
             .bd-placeholder-img {
@@ -31,7 +30,7 @@
             }
         </style>
         <!-- Custom styles for this template -->
-        <link href="signin.css" rel="stylesheet">
+        <link th:href="@{/css/signin.css}" rel="stylesheet">
     </head>
 
     <body class="text-center">
@@ -41,9 +40,7 @@
                 <p th:if="${invalidCredentials}" class="error">Invalid Username/Password</p>
                 <form class="form-signin" th:action="@{/login}" th:object="${loginForm}" method="POST">
                     <!-- top image  -->
-                    <img class="mb-4" th:scr="@{images/Boneappleteeth.jpeg}" alt="" width="144"
-                         height="144">
-
+                    <img class="mb-4" th:src="@{/images/Boneappleteeth.jpeg}" alt="" width="144" height="144">
 
                     <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
 
