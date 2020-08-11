@@ -63,17 +63,18 @@
 
                     <!-- submit button -->
                     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">Sign In</button>
-
                     <br/>
                 </form>
 
-                <div class="form-signin">
-                    <h1 class="h3 mb-3 font-weight-normal">Don't have an account?</h1>
-                    <button name="signup" class="btn btn-lg btn-primary btn-block" type="button">Sign Up</button>
+                <form class="form-signin" th:action="@{/register}" method="GET">
+                    <!--div class="form-Register">-->
+                        <h1 class="h3 mb-3 font-weight-normal">Don't have an account?</h1>
+                        <button class="btn btn-lg btn-primary btn-block">Sign Up
+                        </button>
 
-                    <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
-                </div>
-
+                        <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
+                    <!--</div>-->
+                </form>
             </div>
         </div>
 
