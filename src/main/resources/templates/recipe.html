@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="UTF-8">
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
-
-        <link
-                rel="stylesheet"
-                type="text/css"
-                href="./css/bootstrap.min.css?3984"
         />
         <link rel="stylesheet" type="text/css" href="style.css?4773"/>
         <link
@@ -24,165 +18,74 @@
                 rel="stylesheet"
                 type="text/css"
         />
-        <title>Bon App the Teeth</title>
+        <title>Bone Apple Teeth</title>
+        <script src="/webjars/sockjs-client/sockjs.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.js"></script>
+        <script src="/webjars/jquery/jquery.js"></script>
+        <script src="/webjars/bootstrap"></script>
+        <script src="/webjars/blocs"></script>
+        <script src="/webjars/lazysizes"></script>
+        <script type="text/javascript">
+            var stompClient = null;
+            function connect() {
+                var socket = new SockJS('/interaction');
+                stompClient = Stomp.over(socket);
+<!--                upgrade connection protocol to STOMP-->
+                stompClient.connect({}, function(frame) {
+                    stompClient.subscribe('/topic/messages', function(messageOutput) {
+                        showMessageOutput(messageOutput.body);
+                    });
+                });
+            }
 
-        <!-- Analytics -->
+            function showMessageOutput(message) {
+                var li = document.createElement('li');
+                li.id = "notif";
+                var textNode =  document.createTextNode(message);
+                li.append(textNode);
+                $('#messages').append(li);
+                setTimeout(function() {
+                     li.remove();
+                }, 5000);
+            }
+            connect();
 
-        <!-- Analytics END -->
+        </script>
     </head>
     <body>
         <!-- Main container -->
         <div class="page-container">
-
-            <form action="#" th:action="@{/searchRecipeTenDiet}" th:object="${hits}" method="post">
-                <div class="bloc none l-bloc" id="bloc-3">
-                    <div class="container bloc-sm">
-                        <div class="row align-items-start">
-                            <div class="col-md-6 col">
-                                <div class="form-group">
-                                    <input class="form-control"
-                                           placeholder="Recipe (Restaurant Name)"/>
-                                </div>
+            <div th:each=" hit : ${hits.hits}">
+                <div class="bloc l-bloc" id="bloc-6">
+                    <div class="container b-divider-dashed bloc-md">
+                        <div class="row">
+                            <div class="col-sm-4 col">
+                                <img th:src="@{hit.recipe.image}"
+                                     class="img-fluid mx-auto d-block img-rd-md img-style lazyload"/>
                             </div>
+                            <div class="col-sm-8 col">
+                                <h3 th:text="${hit.recipe.label}" class="mg-md sm-shadow">
+                                </h3>
+                                <h4 th:href="@{hit.recipe.url}" class="mg-md"><br/>
+                                </h4>
 
+                                <ul th:each="ing : ${hit.recipe.ingredientLines}">
+                                    <li th:text="${ing}"></li>
+                                </ul>
 
-                            <div class="col-md-6 col-lg-1">
-                                <!--<a href="login.html"
-                                   class="btn btn-block btn-mordant-red-19"><span class="fa fa-search"></span></a>-->
-                                <button class="btn btn-lg btn-primary btn-block">Search</button>
-                            </div>
-
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input"
-                                           type="radio"
-                                           name="radioSetOne"
-                                           value="option1"/>
-                                    <label class="form-check-label">
-                                        Balanced
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input"
-                                           type="radio"
-                                           name="radioSetOne"
-                                           value="option2"/>
-                                    <label class="form-check-label">
-                                        High Protein
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input"
-                                           type="radio"
-                                           name="radioSetOne"
-                                           value="option3"/>
-                                    <label class="form-check-label">
-                                        Low Fat
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input"
-                                           type="radio"
-                                           name="radioSetOne"
-                                           value="option4"/>
-                                    <label class="form-check-label">
-                                        Low Carb
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
 
-            <!-- <div class="bloc l-bloc" id="bloc-5">
-                 <div class="container bloc-sm">
-                     <div class="row">
-                         <div class="col">
-                             <h2 class="mg-md sm-shadow">
-                                 &lt;!&ndash; Results for <%//= restaurantSearched %> &ndash;&gt;
-                             </h2>
-                         </div>
-                     </div>
-                 </div>
-             </div>-->
-
-            <tr th:each="currentClient, stat : ${wrapper.clientList}">
-                <td><input type="checkbox" th:name="|clientList[${stat.index}].clientID|"
-                           th:value="${currentClient.getClientID()}" th:checked="${currentClient.selected}"/></td>
-                <td th:text="${currentClient.getClientID()}"></td>
-                <td th:text="${currentClient.getIpAddress()}"></td>
-                <td th:text="${currentClient.getDescription()}"></td>
-            </tr>
-
-            <div class="bloc l-bloc" id="bloc-6">
-                <div class="container b-divider-dashed bloc-md">
-                    <div class="row">
-                        <div class="col-sm-4 col">
-                            <!--label, image, url, ingredientLines-->
-
-                            <img src="${hits.getHits().get(0).getRecipe().getImage()}"
-                                 class="img-fluid mx-auto d-block img-rd-md img-style lazyload"/>
-
-                        </div>
-                        <div class="col-sm-8 col">
-                            <h3 th:text="{hits.getHits().get(0).getRecipe().getLabel()}" class="mg-md sm-shadow">
-                            </h3>
-                            <h4 th:href="@{hits.getHits().get(0).getRecipe().getUrl()}" class="mg-md"><br/>
-                            </h4>
-
-                            <ul th:each="ing : ${hits.getHits().get(0).getRecipe().getIngredientLines()}">
-                                <li th:text="${ing}"></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
             </div>
-
-
             <!-- ScrollToTop Button -->
             <a class="bloc-button btn btn-d scrollToTop"
                onclick="scrollToTarget('1',this)"
             ><span class="fa fa-chevron-up"></span
             ></a>
-            <!-- ScrollToTop Button END-->
-
-            <div class="bloc none l-bloc" id="bloc-2">
-                <div class="container bloc-lg">
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group text-lg-center">
-                                <label class="text-lg-center">
-                                    All Hail Head CP
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ul id="messages"></ul>
         </div>
-        <!-- Main container END -->
 
-        <script src="./js/jquery-3.3.1.min.js?9673"></script>
-        <script src="./js/bootstrap.bundle.min.js?8114"></script>
-        <script src="./js/blocs.min.js?9424"></script>
-        <script src="./js/lazysizes.min.js" defer></script>
-        <!-- Additional JS END -->
-
-        <!-- Preloader -->
-        <div id="page-loading-blocs-notifaction" class="page-preloader"></div>
-        <!-- Preloader END -->
     </body>
-</html>
-<head>
-    <meta charset="UTF-8">
-    <title>Recipe Details</title>
-</head>
-<body>
-
-</body>
 </html>

@@ -44,7 +44,13 @@ public class LoginRegisterController {
         else {
             UserInfo user = userInfo.get();
             String correct_pw = user.getPassword();
-            return correct_pw.equalsIgnoreCase(password) ? "recipe" : "login";
+            if (correct_pw.equalsIgnoreCase(password)) {
+                return "home";
+            }
+            else {
+                model.addAttribute("invalidCredentials", true);
+                return "login";
+            }
         }
     }
 
@@ -68,7 +74,7 @@ public class LoginRegisterController {
         else {
             UserInfo user = new UserInfo(email, userName, password);
             userInfoRepository.save(user);
-            return "recipe";
+            return "home";
         }
     }
 

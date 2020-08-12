@@ -5,17 +5,9 @@
         <title>BonApptheTeeth - Home</title>
         <link rel="stylesheet" type="text/css" href="StyleSheet.css">
     </head>
-    <body>
-        <h1>Welcome to Bon App the Teeth</h1>
 
-        <!-- serach engine call goes here -->
-        <form th:action="@{/searchRecipe}" method="post">
-            <input type="text" placeholder="Search a recipe..." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-<html>
     <style>
-        #messages{
+        #messages {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -28,41 +20,70 @@
         }
 
     </style>
-    <head>
-        <meta charset="UTF-8">
-        <title>Bon-app-the-teeth</title>
-        <script src="/webjars/sockjs-client/sockjs.js"></script>
-        <script src="/webjars/stomp-websocket/stomp.js"></script>
-        <script src="/webjars/jquery/jquery.js"></script>
-        <script type="text/javascript">
-            var stompClient = null;
-            function connect() {
-                var socket = new SockJS('/interaction');
-                stompClient = Stomp.over(socket);
-<!--                upgrade connection protocol to STOMP-->
-                stompClient.connect({}, function(frame) {
-                    stompClient.subscribe('/topic/messages', function(messageOutput) {
-                        showMessageOutput(messageOutput.body);
-                    });
-                });
-            }
 
-            function showMessageOutput(message) {
-                var li = document.createElement('li');
-                li.id = "notif";
-                var textNode =  document.createTextNode(message);
-                li.append(textNode);
-                $('#messages').append(li);
-                setTimeout(function() {
-                     li.remove();
-                }, 5000);
-            }
-            connect();
-
-        </script>
-    </head>
     <body>
-        <h1>Welcome to Bon-app-the-teeth</h1>
-        <ul id="messages"></ul>
+        <h1>Welcome to Bon App the Teeth</h1>
+        <form action="#" th:action="@{/searchRecipeTenDiet}"  method="post">
+            <div class="bloc none l-bloc" id="bloc-3">
+                <div class="container bloc-sm">
+                    <div class="row align-items-start">
+                        <div class="col-md-6 col">
+                            <div class="form-group">
+                                <input name = "search" class="form-control"
+                                       placeholder="Recipe (Restaurant Name)"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-1">
+                            <!--<a href="login.html"
+                               class="btn btn-block btn-mordant-red-19"><span class="fa fa-search"></span></a>-->
+                            <button class="btn btn-lg btn-primary btn-block">Search</button>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="radioSetOne"
+                                       value="option1"/>
+                                <label class="form-check-label">
+                                    Balanced
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="radioSetOne"
+                                       value="option2"/>
+                                <label class="form-check-label">
+                                    High Protein
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="radioSetOne"
+                                       value="option3"/>
+                                <label class="form-check-label">
+                                    Low Fat
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="radioSetOne"
+                                       value="option4"/>
+                                <label class="form-check-label">
+                                    Low Carb
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </body>
 </html>
