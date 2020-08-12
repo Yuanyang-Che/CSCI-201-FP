@@ -7,6 +7,7 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
+
         <title>Bone Apple Teeth</title>
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
         <script th:src="@{/webjars/sockjs-client/sockjs.js}"></script>
@@ -39,6 +40,19 @@
             connect();
 
         </script>
+        <style>
+            #messages {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 30px;
+                width: 30%;
+            }
+
+            #notif {
+                list-style-type: none;
+            }
+        </style>
     </head>
     <body>
         <!-- Main container -->
@@ -75,6 +89,6 @@
             ></a>
             <!-- ScrollToTop Button END-->
         </div>
-
+        <ul id="messages"></ul>
     </body>
 </html>
