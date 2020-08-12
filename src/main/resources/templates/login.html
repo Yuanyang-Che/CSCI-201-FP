@@ -71,8 +71,16 @@
                         <h1 class="h3 mb-3 font-weight-normal">Don't have an account?</h1>
                         <button class="btn btn-lg btn-primary btn-block">Sign Up
                         </button>
+                    <!--</div>-->
+                </form>
 
-                        <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
+                <form class="form-signin" th:action="@{/guest}" method="GET">
+                    <!--div class="form-Register">-->
+                    <h1 class="h3 mb-3 font-weight-normal">Just visiting?</h1>
+                    <button class="btn btn-lg btn-primary btn-block">Guest
+                    </button>
+
+                    <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
                     <!--</div>-->
                 </form>
             </div>

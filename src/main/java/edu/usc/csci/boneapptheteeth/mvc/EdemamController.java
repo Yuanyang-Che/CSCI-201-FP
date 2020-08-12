@@ -28,7 +28,6 @@ public class EdemamController {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);
         model.addAttribute("recipe", recipe);
-        this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
         return "recipe";
     }
 
@@ -58,6 +57,37 @@ public class EdemamController {
         Hits hits = instance.getRecipesBySearchDietary(query, option);
         model.addAttribute("hits", hits);
         //System.out.println(hits.getHits().get(0).getRecipe().getLabel());
+        this.simpleMessagingTemplate.convertAndSend("/topic/messages", "someone searched a recipe");
+        return "recipe";
+    }
+
+    @RequestMapping(value = "/searchRecipeTenDietGuest", method = RequestMethod.POST)
+    public String getRecipesBySearchDietaryJSONGuest(@RequestParam(name = "search")
+                                                        String query, Model model) {
+        EdamamApiService instance = new EdamamApiService();
+        String option = (String) model.getAttribute("radioSetOne");
+        if (option == null) {
+            option = "option1";
+        }
+        if (option.equals("option1")) {
+            option = "balanced";
+        }
+        else if (option.equals("option2")) {
+            option = "high-protein";
+        }
+        else if (option.equals("option3")) {
+            option = "low-fat";
+        }
+        else if (option.equals("option4")) {
+            option = "low-carb";
+        }
+        else {
+            option = "balanced";
+        }
+        Hits hits = instance.getRecipesBySearchDietary(query, option);
+        model.addAttribute("hits", hits);
+        //System.out.println(hits.getHits().get(0).getRecipe().getLabel());
+
         return "recipe";
     }
 }

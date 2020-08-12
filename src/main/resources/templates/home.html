@@ -5,7 +5,10 @@
         <title>BonApptheTeeth - Home</title>
         <link rel="stylesheet" type="text/css" href="StyleSheet.css">
     </head>
-
+    <script src="/webjars/sockjs-client/sockjs.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.js"></script>
+    <script src="/webjars/jquery/jquery.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.js"></script>
     <style>
         #messages {
             position: absolute;
@@ -84,6 +87,37 @@
                 </div>
             </div>
         </form>
+
+        <ul id="messages"></ul>
+
+        <script type="text/javascript">
+            var stompClient = null;
+
+            function connect() {
+                var socket = new SockJS('/interaction');
+                stompClient = Stomp.over(socket);
+                <!-- upgrade connection protocol to STOMP-->
+                stompClient.connect({}, function (frame) {
+                    stompClient.subscribe('/topic/messages', function (messageOutput) {
+                        showMessageOutput(messageOutput.body);
+                    });
+                });
+            }
+
+            function showMessageOutput(message) {
+                var li = document.createElement('li');
+                li.id = "notif";
+                var textNode = document.createTextNode(message);
+                li.append(textNode);
+                $('#messages').append(li);
+                setTimeout(function () {
+                    li.remove();
+                }, 10000);
+            }
+
+            connect();
+
+        </script>
 
     </body>
 </html>

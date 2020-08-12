@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Bon-app-the-teeth</title>
+        <title>BonApptheTeeth - For Guest</title>
         <link rel="stylesheet" type="text/css" href="StyleSheet.css">
     </head>
+
+
     <body>
-        <h1>Welcome to Bon-app-the-teeth as Guest</h1>
+        <h1>Welcome to Bon App the Teeth</h1>
+        <form action="#" th:action="@{/searchRecipeTenDiet}" method="post">
+            <div class="bloc none l-bloc" id="bloc-3">
+                <div class="container bloc-sm">
+                    <div class="row align-items-start">
+                        <div class="col-md-6 col">
+                            <div class="form-group">
+                                <input name="search" class="form-control"
+                                       placeholder="Recipe (Restaurant Name)"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-1">
+                            <!--<a href="login.html"
+                               class="btn btn-block btn-mordant-red-19"><span class="fa fa-search"></span></a>-->
+                            <button class="btn btn-lg btn-primary btn-block">Search</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </body>
 </html>
