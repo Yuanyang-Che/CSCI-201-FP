@@ -32,10 +32,10 @@ public class EdemamController {
     }
 
     @RequestMapping(value = "/searchRecipeTenDiet", method = RequestMethod.POST)
-    public String getRecipesBySearchDietaryJSON(@RequestParam(name = "search")
-                                                        String query, Model model) {
+    public String getRecipesBySearchDietaryJSON(@RequestParam(name = "search") String query,
+                                                @RequestParam(name = "radioSetOne") String option, Model model) {
         EdamamApiService instance = new EdamamApiService();
-        String option = (String) model.getAttribute("radioSetOne");
+        /*String option = (String) model.getAttribute("radioSetOne");*/
         if (option == null) {
             option = "option1";
         }
@@ -62,28 +62,10 @@ public class EdemamController {
     }
 
     @RequestMapping(value = "/searchRecipeTenDietGuest", method = RequestMethod.POST)
-    public String getRecipesBySearchDietaryJSONGuest(@RequestParam(name = "search")
-                                                        String query, Model model) {
+    public String getRecipesBySearchDietaryJSONGuest(@RequestParam(name = "search") String query, Model model) {
         EdamamApiService instance = new EdamamApiService();
-        String option = (String) model.getAttribute("radioSetOne");
-        if (option == null) {
-            option = "option1";
-        }
-        if (option.equals("option1")) {
-            option = "balanced";
-        }
-        else if (option.equals("option2")) {
-            option = "high-protein";
-        }
-        else if (option.equals("option3")) {
-            option = "low-fat";
-        }
-        else if (option.equals("option4")) {
-            option = "low-carb";
-        }
-        else {
-            option = "balanced";
-        }
+        String option = "balanced";
+
         Hits hits = instance.getRecipesBySearchDietary(query, option);
         model.addAttribute("hits", hits);
         //System.out.println(hits.getHits().get(0).getRecipe().getLabel());
@@ -91,4 +73,5 @@ public class EdemamController {
         return "recipe";
     }
 }
+
 
