@@ -131,18 +131,13 @@
                         <div class="col-sm-8 col">
                             <h3 th:text="{hits.getHits().get(0).getRecipe().getLabel()}" class="mg-md sm-shadow">
                             </h3>
-                            <h4 th:text="{hits.getHits().get(0).getRecipe().getUrl()}" class="mg-md"><br/>
+                            <h4 th:href="@{hits.getHits().get(0).getRecipe().getUrl()}" class="mg-md"><br/>
                             </h4>
 
-                            < th:each="ing : ${hits.getHits().get(0).getRecipe().getIngredientLines()}">
-                                <h5 th:text="ing"></h5>
-                            </>
+                            <ul th:each="ing : ${hits.getHits().get(0).getRecipe().getIngredientLines()}">
+                                <li th:text="${ing}"></li>
+                            </ul>
 
-                            <h4 class="mg-md">
-                                <a class="link-0-style" href="login.html"
-                                ><%= businesses.get(i).getUrl() %></a
-                                ><br/>
-                            </h4>
                         </div>
                     </div>
                 </div>
@@ -185,7 +180,7 @@
 </html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>Recipe Details</title>
 </head>
 <body>
 
