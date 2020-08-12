@@ -1,6 +1,8 @@
 package edu.usc.csci.boneapptheteeth.mvc.dto;
 
-public class Hit {
+import java.io.Serializable;
+
+public class Hit implements Serializable {
     public Recipe getRecipe() {
         return recipe;
     }

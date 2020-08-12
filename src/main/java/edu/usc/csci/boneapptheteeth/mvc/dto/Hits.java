@@ -1,9 +1,10 @@
 package edu.usc.csci.boneapptheteeth.mvc.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hits {
+public class Hits implements Serializable {
     private List<Hit> hits = new ArrayList<>();
 
     public List<Hit> getHits() {
