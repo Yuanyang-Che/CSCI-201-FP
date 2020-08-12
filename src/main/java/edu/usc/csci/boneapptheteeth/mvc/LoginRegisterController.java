@@ -44,7 +44,7 @@ public class LoginRegisterController {
         else {
             UserInfo user = userInfo.get();
             String correct_pw = user.getPassword();
-            return correct_pw.equalsIgnoreCase(password) ? "home" : "login";
+            return correct_pw.equalsIgnoreCase(password) ? "recipe" : "login";
         }
     }
 
@@ -68,7 +68,7 @@ public class LoginRegisterController {
         else {
             UserInfo user = new UserInfo(email, userName, password);
             userInfoRepository.save(user);
-            return "home";
+            return "recipe";
         }
     }
 
