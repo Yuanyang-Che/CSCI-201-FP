@@ -48,13 +48,14 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4 col">
-                                <img th:src="@{hit.recipe.image}"
+                                <img th:src="${hit.recipe.image}"
                                      class=""/>
                             </div>
                             <div class="">
                                 <h3 th:text="${hit.recipe.label}" class=" ">
                                 </h3>
-                                <h4 th:href="${hit.recipe.url}" class=""><br/>
+<!--                                <span th:text="${"+hit.recipe.url}"></span>-->
+                                <h4 th:href="${hit.recipe.url}" class="">See Recipe<br/>
                                 </h4>
 
                                 <ul th:each="ing : ${hit.recipe.ingredientLines}">
