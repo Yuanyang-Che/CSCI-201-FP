@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>BonApptheTeeth - For Guest</title>
-        <link rel="stylesheet" type="text/css" href="StyleSheet.css">
-    </head>
+<head>
+    <title>BonApptheTeeth - Home</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin,latin-ext"/>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+<script src="/webjars/sockjs-client/sockjs.js"></script>
+<script src="/webjars/stomp-websocket/stomp.js"></script>
+<script src="/webjars/jquery/jquery.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.bundle.js"></script>
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-    <body>
-        <h1>Welcome to Bon App the Teeth</h1>
-        <form action="#" th:action="@{/searchRecipeTenDietGuest}" method="post">
-            <div class="bloc none l-bloc" id="bloc-3">
-                <div class="container bloc-sm">
-                    <div class="row align-items-start">
-                        <div class="col-md-6 col">
-                            <div class="form-group">
-                                <input name="search" class="form-control"
-                                       placeholder="Recipe (Restaurant Name)"/>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-1">
-                            <!--<a href="login.html"
-                               class="btn btn-block btn-mordant-red-19"><span class="fa fa-search"></span></a>-->
-                            <button class="btn btn-lg btn-primary btn-block">Search</button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </form>
-
-    </body>
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+<body style="flex-direction: column">
+<h1 class="h3 mb-3 font-weight-normal">Welcome to Bone Apple Teeth</h1>
+<form action="#" th:action="@{/searchRecipeTenDietGuest}"  method="post">
+    <label class="sr-only">Recipe</label>
+    <input name="search" autofocus="autofocus" class="form-control"
+           placeholder="Recipe required" required>
+    <button class="btn btn-lg btn-primary btn-block">Search</button>
+    <br/>
+    <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
+</form>
+</body>
 </html>

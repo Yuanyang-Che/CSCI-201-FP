@@ -65,11 +65,8 @@ public class EdemamController {
     public String getRecipesBySearchDietaryJSONGuest(@RequestParam(name = "search") String query, Model model) {
         EdamamApiService instance = new EdamamApiService();
         String option = "balanced";
-
         Hits hits = instance.getRecipesBySearchDietary(query, option);
         model.addAttribute("hits", hits);
-        //System.out.println(hits.getHits().get(0).getRecipe().getLabel());
-
         return "recipe";
     }
 }
