@@ -11,7 +11,6 @@ import sun.security.provider.PolicyParser;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/recipe")
 public class EdemamController {
     @Autowired
     SimpMessagingTemplate simpleMessagingTemplate;
@@ -22,7 +21,7 @@ public class EdemamController {
         Recipe recipe = instance.getRandomRecipe();
         return recipe;
     }
-    @GetMapping("/search/{query}")
+    @RequestMapping(value = "/searchRecipe", method = RequestMethod.GET)
     public Recipe getRecipeBySearchJSON(@PathVariable("query") String query, Principal user) {
         EdamamApiService instance = new EdamamApiService();
         Recipe recipe = instance.getRecipeBySearch(query);

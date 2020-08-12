@@ -50,5 +50,9 @@
     <body>
         <h1>Welcome to Bon-app-the-teeth</h1>
         <ul id="messages"></ul>
+        <form th:action="@{/searchRecipe}" method="post">
+            <input type="text" placeholder="Search a recipe..." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </body>
 </html>
