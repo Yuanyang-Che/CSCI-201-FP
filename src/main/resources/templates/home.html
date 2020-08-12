@@ -2,142 +2,133 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>BonApptheTeeth - Home</title>
-        <meta charset="utf-8"/>
-        <meta name="keywords" content=""/>
-        <meta name="description" content=""/>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
-        <link rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css?4773}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}"/>
-        <link rel="stylesheet" type="text/css"
-              href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin,latin-ext"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin,latin-ext"/>
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
 
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        <!-- Custom styles for this template -->
+        <link th:href="@{/css/signin.css}" rel="stylesheet">
     </head>
     <script src="/webjars/sockjs-client/sockjs.js"></script>
     <script src="/webjars/stomp-websocket/stomp.js"></script>
     <script src="/webjars/jquery/jquery.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.bundle.js"></script>
     <style>
-        #messages {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 30px;
-            width: 30%;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
-        #notif {
-            list-style-type: none;
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
         }
-
     </style>
     <script type="text/javascript">
-        var stompClient = null;
+            var stompClient = null;
 
-        function connect() {
-            var socket = new SockJS('/interaction');
-            stompClient = Stomp.over(socket);
-            <!-- upgrade connection protocol to STOMP-->
-            stompClient.connect({}, function (frame) {
-                stompClient.subscribe('/topic/messages', function (messageOutput) {
-                    showMessageOutput(messageOutput.body);
+            function connect() {
+                var socket = new SockJS('/interaction');
+                stompClient = Stomp.over(socket);
+                <!-- upgrade connection protocol to STOMP-->
+                stompClient.connect({}, function (frame) {
+                    stompClient.subscribe('/topic/messages', function (messageOutput) {
+                        showMessageOutput(messageOutput.body);
+                    });
                 });
-            });
-        }
+            }
 
-        function showMessageOutput(message) {
-            var li = document.createElement('li');
-            li.id = "notif";
-            var textNode = document.createTextNode(message);
-            li.append(textNode);
-            $('#messages').append(li);
-            setTimeout(function () {
-                li.remove();
-            }, 10000);
-        }
+            function showMessageOutput(message) {
+                var li = document.createElement('li');
+                li.id = "notif";
+                var textNode = document.createTextNode(message);
+                li.append(textNode);
+                $('#messages').append(li);
+                setTimeout(function () {
+                    li.remove();
+                }, 10000);
+            }
 
-        connect();
+            connect();
 
-    </script>
-    <body>
-        <h1>Welcome to Bon App the Teeth</h1>
-        <form action="#" th:action="@{/searchRecipeTenDiet}" method="post">
-            <div class="bloc none l-bloc" id="bloc-3">
-                <div class="container bloc-sm">
-                    <div class="row align-items-start">
-                        <div class="col-md-6 col">
-                            <div class="form-group">
-                                <input name="search" class="form-control"
-                                       placeholder="Recipe (Restaurant Name)"/>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-1">
-                            <!--<a href="login.html"
-                               class="btn btn-block btn-mordant-red-19"><span class="fa fa-search"></span></a>-->
-                            <button class="btn btn-lg btn-primary btn-block">Search</button>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="radioSetOne"
-                                       value="option1" checked/>
-                                <label class="form-check-label">
-                                    Balanced
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="radioSetOne"
-                                       value="option2"/>
-                                <label class="form-check-label">
-                                    High Protein
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="radioSetOne"
-                                       value="option3"/>
-                                <label class="form-check-label">
-                                    Low Fat
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="radioSetOne"
-                                       value="option4"/>
-                                <label class="form-check-label">
-                                    Low Carb
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+        </script>
+    <body style="flex-direction: column">
+        <h1 class="h3 mb-3 font-weight-normal">Welcome to Bone Apple Teeth</h1>
+        <form action="#" th:action="@{/searchRecipeTenDiet}"  method="post">
+            <label class="sr-only">Recipe</label>
+            <input name="search" autofocus="autofocus" class="form-control"
+                   placeholder="Recipe required" required>
+            <button class="btn btn-lg btn-primary btn-block">Search</button>
+            <br/>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioSetOne"
+                           value="option1" checked/>
+                    <label class="form-check-label">
+                        Balanced
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioSetOne"
+                           value="option2"/>
+                    <label class="form-check-label">
+                        High Protein
+                    </label>
                 </div>
             </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioSetOne"
+                           value="option3"/>
+                    <label class="form-check-label">
+                        Low Fat
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioSetOne"
+                           value="option4"/>
+                    <label class="form-check-label">
+                        Low Carb
+                    </label>
+                </div>
+            </div>
+            <p class="mt-5 mb-3 text-muted">&copy; Bone App the Teeth | 2020</p>
         </form>
         <ul id="messages"></ul>
-
-        <script>
-            var method;
-            const rbs = document.querySelectorAll('input[name="radioSetOne"]');
-            var selectedValue;
-            for (const rb of rbs) {
-                if (rb.checked) {
-                    selectedValue = rb.value;
-                    method = selectedValue;
-                    break;
-                }
-            }
-            
-        </script>
     </body>
 </html>
