@@ -7,22 +7,12 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
-<!--        <link rel="stylesheet" type="text/css" href="style.css?4773"/>-->
-<!--        <link-->
-<!--                rel="stylesheet"-->
-<!--                type="text/css"-->
-<!--                href="./css/font-awesome.min.css"-->
-<!--        />-->
-<!--        <link-->
-<!--                href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin,latin-ext"-->
-<!--                rel="stylesheet"-->
-<!--                type="text/css"-->
-<!--        />-->
         <title>Bone Apple Teeth</title>
+        <link href="/webjars/bootstrap/css/bootstrap.css">
         <script src="/webjars/sockjs-client/sockjs.js"></script>
         <script src="/webjars/stomp-websocket/stomp.js"></script>
         <script src="/webjars/jquery/jquery.js"></script>
-        <script src="/webjars/bootstrap"></script>
+        <script src="/webjars/bootstrap/js/bootstrap.bundle.js"></script>
         <script type="text/javascript">
             var stompClient = null;
             function connect() {
@@ -54,17 +44,17 @@
         <!-- Main container -->
         <div class="page-container">
             <div th:each=" hit : ${hits.hits}">
-                <div class="bloc l-bloc" id="bloc-6">
-                    <div class="container b-divider-dashed bloc-md">
+                <div id="">
+                    <div class="container">
                         <div class="row">
                             <div class="col-sm-4 col">
                                 <img th:src="@{hit.recipe.image}"
-                                     class="img-fluid mx-auto d-block img-rd-md img-style lazyload"/>
+                                     class=""/>
                             </div>
-                            <div class="col-sm-8 col">
-                                <h3 th:text="${hit.recipe.label}" class="mg-md sm-shadow">
+                            <div class="">
+                                <h3 th:text="${hit.recipe.label}" class=" ">
                                 </h3>
-                                <h4 th:href="@{hit.recipe.url}" class="mg-md"><br/>
+                                <h4 th:href="${hit.recipe.url}" class=""><br/>
                                 </h4>
 
                                 <ul th:each="ing : ${hit.recipe.ingredientLines}">
@@ -78,10 +68,6 @@
 
             </div>
             <!-- ScrollToTop Button -->
-            <a class="bloc-button btn btn-d scrollToTop"
-               onclick="scrollToTarget('1',this)"
-            ><span class="fa fa-chevron-up"></span
-            ></a>
             <ul id="messages"></ul>
         </div>
 
