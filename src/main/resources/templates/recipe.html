@@ -55,8 +55,8 @@
                                 <h3 th:text="${hit.recipe.label}" class=" ">
                                 </h3>
 <!--                                <span th:text="${"+hit.recipe.url}"></span>-->
-                                <h4 th:href="${hit.recipe.url}" class="">See Recipe<br/>
-                                </h4>
+                                <a th:href="${hit.recipe.url}" class="">See Recipe<br/>
+                                </a>
 
                                 <ul th:each="ing : ${hit.recipe.ingredientLines}">
                                     <li th:text="${ing}"></li>
