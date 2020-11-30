@@ -1,4 +1,7 @@
 # CSCI-201-FP
+
+## A small app that lets you search recipes and notifies you when others have cooked a recipe. Was built in 1 week as a small group project.
+
 To build and run the backend
 mac/linux
 ./mvnw spring-boot:run
